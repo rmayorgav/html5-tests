@@ -8,14 +8,16 @@
   <body>
     <div id="lat"></div>
     <div id="lon"></div>
+    <div id="alt"></div>
   </body>
   <script>
     function showPos(position) {
-      console.debug(position);
       lat = position.coords.latitude;
       lon = position.coords.longitude;
-      document.getElementById("lat").innerText = "Lat: " + lat;
-      document.getElementById("lon").innerText = "Lon: " + lon;
+      alt = position.coords.altitude;
+      document.getElementById("lat").innerText = "Latitude: " + lat;
+      document.getElementById("lon").innerText = "Longitude: " + lon;
+      document.getElementById("alt").innerText = "Altitude: " + alt;
     }
 
     window.addEventListener("load", (event) => {
