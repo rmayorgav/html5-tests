@@ -30,6 +30,7 @@
         console.log("[+] geolocation ok");
         navigator.geolocation.watchPosition(showPos, function (err) {}, {
           enableHighAccuracy: true,
+          maximumAge: 0
         });
       } else {
         alert("Geolocation is not supported by this browser!");
