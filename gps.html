@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test GPS</title>
+  </head>
+  <body>
+    <div id="lat"></div>
+    <div id="lon"></div>
+  </body>
+  <script>
+    function showPos(position) {
+      console.debug(position);
+      lat = position.coords.latitude;
+      lon = position.coords.longitude;
+      document.getElementById("lat").innerText = "Lat: " + lat;
+      document.getElementById("lon").innerText = "Lon: " + lon;
+    }
+
+    window.addEventListener("load", (event) => {
+      console.log("[+] load event.");
+      if (navigator.geolocation) {
+        console.log("[+] geolocation ok");
+        navigator.geolocation.watchPosition(showPos);
+      } else {
+        alert("Geolocation is not supported by this browser!");
+      }
+    });
+  </script>
+</html>
