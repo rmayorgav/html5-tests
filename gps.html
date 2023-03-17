@@ -16,9 +16,12 @@
   <script>
     function showPos(position) {
       now = Date.now();
+
+      lat = position.coords.latitude;
       lon = position.coords.longitude;
       alt = position.coords.altitude;
       acu = position.coords.accuracy;
+
       document.getElementById("now").innerText = "Date: " + now;
       document.getElementById("lat").innerText = "Latitude: " + lat;
       document.getElementById("lon").innerText = "Longitude: " + lon;
