@@ -6,7 +6,7 @@
     <title>Test GPS</title>
   </head>
   <body>
-    <div>Version: 2</div>
+    <div>Version: 4</div>
     <div id="lat"></div>
     <div id="lon"></div>
     <div id="alt"></div>
@@ -14,7 +14,7 @@
   </body>
   <script>
     function showPos(position) {
-      lat = position.coords.latitude;
+      t = lat = position.coords.latitude;
       lon = position.coords.longitude;
       alt = position.coords.altitude;
       acu = position.coords.accuracy;
@@ -28,12 +28,9 @@
       console.log("[+] load event.");
       if (navigator.geolocation) {
         console.log("[+] geolocation ok");
-        setInterval(
-          navigator.geolocation.getCurrentPosition(showPos, function (err) {}, {
-            enableHighAccuracy: true,
-          }),
-          1
-        );
+        navigator.geolocation.watchPosition(showPos, function (err) {}, {
+          enableHighAccuracy: true,
+        });
       } else {
         alert("Geolocation is not supported by this browser!");
       }
