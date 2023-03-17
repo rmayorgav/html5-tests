@@ -9,15 +9,18 @@
     <div id="lat"></div>
     <div id="lon"></div>
     <div id="alt"></div>
+    <div id="acu"></div>
   </body>
   <script>
     function showPos(position) {
       lat = position.coords.latitude;
       lon = position.coords.longitude;
       alt = position.coords.altitude;
+      acu = position.coords.accuracy
       document.getElementById("lat").innerText = "Latitude: " + lat;
       document.getElementById("lon").innerText = "Longitude: " + lon;
       document.getElementById("alt").innerText = "Altitude: " + alt;
+      document.getElementById("acu").innerText = "Accurasy: " + acu;
     }
 
     window.addEventListener("load", (event) => {
