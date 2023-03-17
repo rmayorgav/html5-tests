@@ -27,7 +27,7 @@
       console.log("[+] load event.");
       if (navigator.geolocation) {
         console.log("[+] geolocation ok");
-        navigator.geolocation.watchPosition(showPos, function () {}, {
+        navigator.geolocation.getCurrentPosition(showPos, function (err) {}, {
           enableHighAccuracy: true,
         });
       } else {

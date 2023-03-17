@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/rmayorgav/html5-tests#readme",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.1.0"
   }
 }
