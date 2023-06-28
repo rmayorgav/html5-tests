@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test GPS</title>
-  </head>
-  <body>
-    <div>Version: 7</div>
-    <div id="now"></div>
-    <div id="lat"></div>
-    <div id="lon"></div>
-    <div id="alt"></div>
-    <div id="acu"></div>
-  </body>
-  <script>
-    function showPos(position) {
-      now = Date.now();
 
-      lat = position.coords.latitude;
-      lon = position.coords.longitude;
-      alt = position.coords.altitude;
-      acu = position.coords.accuracy;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test GPS</title>
+</head>
 
-      document.getElementById("now").innerText = "Date: " + now;
-      document.getElementById("lat").innerText = "Latitude: " + lat;
-      document.getElementById("lon").innerText = "Longitude: " + lon;
-      document.getElementById("alt").innerText = "Altitude: " + alt;
-      document.getElementById("acu").innerText = "Accuracy: " + acu;
+<body>
+  <div>Version: 7</div>
+  <div id="now"></div>
+  <div id="lat"></div>
+  <div id="lon"></div>
+  <div id="alt"></div>
+  <div id="acu"></div>
+</body>
+<script>
+  function showPos(position) {
+    now = Date.now();
+
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    alt = position.coords.altitude;
+    acu = position.coords.accuracy;
+
+    document.getElementById("now").innerText = "Date: " + now;
+    document.getElementById("lat").innerText = "Latitude: " + lat;
+    document.getElementById("lon").innerText = "Longitude: " + lon;
+    document.getElementById("alt").innerText = "Altitude: " + alt;
+    document.getElementById("acu").innerText = "Accuracy: " + acu;
+  }
+
+  window.addEventListener("load", (event) => {
+    console.log("[+] load event.");
+    if (navigator.geolocation) {
+      console.log("[+] geolocation ok");
+      navigator.geolocation.watchPosition(showPos, function (err) { }, {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+      });
+    } else {
+      alert("Geolocation is not supported by this browser!");
     }
+  });
+</script>
 
-    window.addEventListener("load", (event) => {
-      console.log("[+] load event.");
-      if (navigator.geolocation) {
-        console.log("[+] geolocation ok");
-        navigator.geolocation.watchPosition(showPos, function (err) {}, {
-          enableHighAccuracy: true,
-          maximumAge: 0,
-        });
-      } else {
-        alert("Geolocation is not supported by this browser!");
-      }
-    });
-  </script>
 </html>
